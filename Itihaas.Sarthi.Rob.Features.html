@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Features — Itihaas Sarthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fafafa; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 60px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #ebebeb; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: #0a0a0a; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #111; }
+    footer { margin-top: auto; background: #fff; border-top: 1px solid #ebebeb; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0a0a0a; }
+    .footer-copy { font-size: 12px; color: #c4c9d4; }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    .page-hero { padding: 90px 60px 60px; background: #fff; border-bottom: 1px solid #ebebeb; animation: fade-up 0.7s ease 0.1s both; }
+    .breadcrumb { font-size: 12px; color: #9ca3af; margin-bottom: 24px; }
+    .breadcrumb a { color: #9ca3af; text-decoration: none; } .breadcrumb a:hover { color: #111; }
+    .page-h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #0a0a0a; margin-bottom: 20px; }
+    .page-sub { font-size: 17px; color: #6b7280; max-width: 540px; line-height: 1.75; }
+
+    .content { padding: 80px 60px; animation: fade-up 0.7s ease 0.2s both; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; color: #0a0a0a; margin-bottom: 40px; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .feat-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; transition: box-shadow 0.2s, transform 0.2s; }
+    .feat-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .feat-icon { width: 42px; height: 42px; background: #f3f4f6; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .feat-icon svg { width: 21px; height: 21px; stroke: #374151; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feat-title { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #111; }
+    .feat-desc { font-size: 14px; color: #6b7280; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; }
+      .page-hero, .content { padding: 60px 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="Itihaas.Sarthi.Rob.html" class="nav-logo">Itihaas Sarthi</a>
+  <ul class="nav-links">
+    <li><a href="Itihaas.Sarthi.Rob.About.html">About</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.HowItWorks.html">How It Works</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Features.html" class="active">Features</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Heritage.html">Heritage</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="Itihaas.Sarthi.Rob.html">Home</a> &nbsp;/&nbsp; Features</p>
+  <h1 class="page-h1">Features</h1>
+  <p class="page-sub">Everything Itihaas Sarthi can do — built for all visitors, designed for India's toughest heritage environments.</p>
+</div>
+
+<section class="content">
+  <p class="section-label">What It Offers</p>
+  <h2 class="section-title">Built for everyone, everywhere</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span class="feat-title">Accessibility First</span>
+      <span class="feat-desc">A retractable handle extends automatically for visually impaired visitors. Vibration alerts signal turns, obstacles, and stops — making heritage sites accessible to everyone.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <span class="feat-title">Multilingual Narration</span>
+      <span class="feat-desc">Speaks cultural facts in Hindi, English, and regional languages via a simple selector button — so every visitor connects with history in their own tongue.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg></div>
+      <span class="feat-title">GPS-Powered Context</span>
+      <span class="feat-desc">Knows exactly where it is and automatically loads the right historical facts — no manual input needed from the visitor at any point.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+      <span class="feat-title">Camera Vision</span>
+      <span class="feat-desc">An onboard camera identifies monuments in real time, helping the robot understand its surroundings and enrich narration with visual context.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="13" rx="2"/><path d="M5 6V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg></div>
+      <span class="feat-title">Storage Compartment</span>
+      <span class="feat-desc">Carries visitor essentials — water bottles, bags, and belongings — so tourists can explore hands-free and comfortably throughout the site.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <span class="feat-title">Safe & Reliable Power</span>
+      <span class="feat-desc">A rechargeable 7.4V Li-ion battery with a built-in management system prevents overcharging and keeps the robot running safely all day long.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Itihaas Sarthi</span>
+  <span class="footer-copy">© 2026 Itihaas Sarthi. All rights reserved.</span>
+</footer>
+</body>
+</html>

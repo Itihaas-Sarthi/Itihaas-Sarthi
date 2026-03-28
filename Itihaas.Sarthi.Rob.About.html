@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Itihaas Sarthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #fafafa; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 60px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #ebebeb; animation: fade-down 0.5s ease both; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: #0a0a0a; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #111; }
+    section { padding: 80px 60px; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; letter-spacing: -0.02em; color: #0a0a0a; margin-bottom: 20px; }
+    .section-body { font-size: 15px; color: #6b7280; max-width: 620px; line-height: 1.85; }
+    footer { margin-top: auto; background: #fff; border-top: 1px solid #ebebeb; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0a0a0a; }
+    .footer-copy { font-size: 12px; color: #c4c9d4; }
+    @keyframes fade-down { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    @keyframes fade-up   { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    /* PAGE SPECIFIC */
+    .page-hero { padding: 90px 60px 60px; background: #fff; border-bottom: 1px solid #ebebeb; animation: fade-up 0.7s ease 0.1s both; }
+    .breadcrumb { font-size: 12px; color: #9ca3af; margin-bottom: 24px; }
+    .breadcrumb a { color: #9ca3af; text-decoration: none; } .breadcrumb a:hover { color: #111; }
+    .page-h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #0a0a0a; margin-bottom: 20px; }
+    .page-sub { font-size: 17px; color: #6b7280; max-width: 540px; line-height: 1.75; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; animation: fade-up 0.7s ease 0.2s both; }
+    .about-visual { display: flex; align-items: center; justify-content: center; background: #f3f4f6; border-radius: 20px; height: 360px; }
+    .robot-svg { width: 180px; height: 220px; }
+    .about-points { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+    .point { display: flex; gap: 16px; align-items: flex-start; }
+    .point-num { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; color: #d1d5db; padding-top: 2px; min-width: 20px; }
+    .point-text { font-size: 14px; color: #374151; line-height: 1.7; }
+    .point-text strong { font-weight: 600; color: #111; }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; }
+      section, .page-hero { padding: 60px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="Itihaas.Sarthi.Rob.html" class="nav-logo">Itihaas Sarthi</a>
+  <ul class="nav-links">
+    <li><a href="Itihaas.Sarthi.Rob.About.html" class="active">About</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.HowItWorks.html">How It Works</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Features.html">Features</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Heritage.html">Heritage</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="Itihaas.Sarthi.Rob.html">Home</a> &nbsp;/&nbsp; About</p>
+  <h1 class="page-h1">About the Robot</h1>
+  <p class="page-sub">Itihaas Sarthi is an autonomous guiding robot built from the ground up to preserve, narrate, and bring Indian heritage to life for every visitor.</p>
+</div>
+
+<section style="background:#fff; border-bottom:1px solid #ebebeb;">
+  <div class="about-grid">
+    <div class="about-visual">
+      <svg class="robot-svg" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="80" y1="30" x2="80" y2="14" stroke="#d1d5db" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="80" cy="10" r="5" fill="#374151"/>
+        <rect x="44" y="30" width="72" height="54" rx="12" fill="#e5e7eb"/>
+        <rect x="58" y="46" width="16" height="10" rx="4" fill="#374151"/>
+        <rect x="86" y="46" width="16" height="10" rx="4" fill="#374151"/>
+        <rect x="60" y="48" width="6" height="4" rx="2" fill="#6b7280"/>
+        <rect x="88" y="48" width="6" height="4" rx="2" fill="#6b7280"/>
+        <rect x="62" y="66" width="36" height="5" rx="2.5" fill="#d1d5db"/>
+        <rect x="72" y="84" width="16" height="10" rx="4" fill="#d1d5db"/>
+        <rect x="32" y="94" width="96" height="68" rx="14" fill="#e5e7eb"/>
+        <rect x="52" y="110" width="56" height="34" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+        <circle cx="68" cy="124" r="5" fill="#374151"/>
+        <circle cx="80" cy="124" r="5" fill="#9ca3af"/>
+        <circle cx="92" cy="124" r="5" fill="#374151"/>
+        <rect x="10" y="96" width="20" height="54" rx="10" fill="#d1d5db"/>
+        <rect x="130" y="96" width="20" height="54" rx="10" fill="#d1d5db"/>
+        <ellipse cx="52" cy="170" rx="20" ry="10" fill="#374151"/>
+        <ellipse cx="52" cy="168" rx="14" ry="6" fill="#4b5563"/>
+        <ellipse cx="108" cy="170" rx="20" ry="10" fill="#374151"/>
+        <ellipse cx="108" cy="168" rx="14" ry="6" fill="#4b5563"/>
+      </svg>
+    </div>
+    <div>
+      <p class="section-label">What Is It</p>
+      <h2 class="section-title">Built for India's heritage</h2>
+      <p class="section-body">Itihaas Sarthi combines autonomous navigation, GPS-powered location awareness, multilingual audio narration, and accessibility-first design into a single robot — purpose-built to guide visitors through India's most significant cultural landmarks.</p>
+      <div class="about-points">
+        <div class="point"><span class="point-num">01</span><span class="point-text"><strong>Accessibility</strong> — A retractable handle assists visually impaired visitors, guiding them safely with vibration alerts.</span></div>
+        <div class="point"><span class="point-num">02</span><span class="point-text"><strong>Cultural Narration</strong> — Speaks curated historical facts about each site in the visitor's chosen language.</span></div>
+        <div class="point"><span class="point-num">03</span><span class="point-text"><strong>Autonomous Navigation</strong> — Moves safely using ultrasonic sensors, cliff detectors, and a camera to avoid obstacles.</span></div>
+        <div class="point"><span class="point-num">04</span><span class="point-text"><strong>Practical Design</strong> — Includes a storage compartment for visitor belongings and a durable weather-resistant chassis.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Itihaas Sarthi</span>
+  <span class="footer-copy">© 2026 Itihaas Sarthi. All rights reserved.</span>
+</footer>
+</body>
+</html>
