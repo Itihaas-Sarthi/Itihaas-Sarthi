@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How It Works — Itihaas Sarthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fafafa; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 60px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #ebebeb; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: #0a0a0a; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #111; }
+    footer { margin-top: auto; background: #fff; border-top: 1px solid #ebebeb; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0a0a0a; }
+    .footer-copy { font-size: 12px; color: #c4c9d4; }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    .page-hero { padding: 90px 60px 60px; background: #fff; border-bottom: 1px solid #ebebeb; animation: fade-up 0.7s ease 0.1s both; }
+    .breadcrumb { font-size: 12px; color: #9ca3af; margin-bottom: 24px; }
+    .breadcrumb a { color: #9ca3af; text-decoration: none; } .breadcrumb a:hover { color: #111; }
+    .page-h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #0a0a0a; margin-bottom: 20px; }
+    .page-sub { font-size: 17px; color: #6b7280; max-width: 540px; line-height: 1.75; }
+
+    .content { padding: 80px 60px; animation: fade-up 0.7s ease 0.2s both; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; color: #0a0a0a; margin-bottom: 40px; }
+
+    .steps-wrap { border: 1px solid #e5e7eb; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .steps-row { display: grid; }
+    .steps-row.top    { grid-template-columns: repeat(3, 1fr); }
+    .steps-row.bottom { grid-template-columns: repeat(2, 1fr); border-top: 1px solid #e5e7eb; }
+    .step { background: #fff; padding: 36px 32px; display: flex; flex-direction: column; gap: 14px; border-right: 1px solid #e5e7eb; }
+    .step:last-child { border-right: none; }
+    .step-num { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #d1d5db; }
+    .step-icon { width: 44px; height: 44px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
+    .step-icon svg { width: 22px; height: 22px; stroke: #374151; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .step-title { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; color: #111; }
+    .step-desc { font-size: 14px; color: #9ca3af; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; }
+      .page-hero, .content { padding: 60px 24px; }
+      .steps-row.top, .steps-row.bottom { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="Itihaas.Sarthi.Rob.html" class="nav-logo">Itihaas Sarthi</a>
+  <ul class="nav-links">
+    <li><a href="Itihaas.Sarthi.Rob.About.html">About</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.HowItWorks.html" class="active">How It Works</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Features.html">Features</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Heritage.html">Heritage</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="Itihaas.Sarthi.Rob.html">Home</a> &nbsp;/&nbsp; How It Works</p>
+  <h1 class="page-h1">How It Works</h1>
+  <p class="page-sub">From a single scan to a full narrated tour — five steps that power the entire Itihaas Sarthi experience.</p>
+</div>
+
+<section class="content">
+  <p class="section-label">The Process</p>
+  <h2 class="section-title">From activation to narration</h2>
+  <div class="steps-wrap">
+    <div class="steps-row top">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <span class="step-title">RFID Activation</span>
+        <span class="step-desc">The robot wakes up when an authorised RFID tag is scanned. This ensures only approved users can activate the system, keeping it secure and ready to assist.</span>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+        <span class="step-title">Location Detection</span>
+        <span class="step-desc">GPS pinpoints the robot's exact position. The onboard camera cross-references the surroundings to identify the heritage site and load the correct content.</span>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <span class="step-title">Facts Retrieved</span>
+        <span class="step-desc">Historical facts are pulled from preloaded onboard memory — no internet required. Content is curated, accurate, and tailored to the specific monument or site.</span>
+      </div>
+    </div>
+    <div class="steps-row bottom">
+      <div class="step">
+        <span class="step-num">04</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+        <span class="step-title">Audio Narration</span>
+        <span class="step-desc">A built-in text-to-speech module reads the facts aloud through the speaker. Visitors can choose their preferred language using the language selector button, and adjust volume with tactile controls.</span>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <span class="step-title">Guided Movement</span>
+        <span class="step-desc">Ultrasonic sensors detect obstacles and people. Cliff sensors prevent falls at steps or edges. Vibration motors alert the user before turns or stops — keeping every visitor safe throughout the tour.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Itihaas Sarthi</span>
+  <span class="footer-copy">© 2026 Itihaas Sarthi. All rights reserved.</span>
+</footer>
+</body>
+</html>

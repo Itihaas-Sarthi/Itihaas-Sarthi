@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heritage — Itihaas Sarthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #fafafa; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 60px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #ebebeb; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none; color: #0a0a0a; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #111; }
+    footer { margin-top: auto; background: #fff; border-top: 1px solid #ebebeb; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0a0a0a; }
+    .footer-copy { font-size: 12px; color: #c4c9d4; }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    .page-hero { padding: 90px 60px 60px; background: #0a0a0a; border-bottom: 1px solid #1c1f24; animation: fade-up 0.7s ease 0.1s both; }
+    .breadcrumb { font-size: 12px; color: #4b5563; margin-bottom: 24px; }
+    .breadcrumb a { color: #4b5563; text-decoration: none; } .breadcrumb a:hover { color: #9ca3af; }
+    .page-h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: #f9fafb; margin-bottom: 20px; }
+    .page-sub { font-size: 17px; color: #6b7280; max-width: 540px; line-height: 1.75; }
+
+    .content { padding: 80px 60px; animation: fade-up 0.7s ease 0.2s both; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; color: #0a0a0a; margin-bottom: 16px; }
+    .section-body { font-size: 15px; color: #6b7280; max-width: 600px; line-height: 1.85; margin-bottom: 48px; }
+
+    .sites-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .site-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; transition: box-shadow 0.2s, transform 0.2s; }
+    .site-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .site-index { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #d1d5db; }
+    .site-name { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #0a0a0a; letter-spacing: -0.01em; }
+    .site-desc { font-size: 13px; color: #9ca3af; line-height: 1.65; }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; } .nav-links { display: none; }
+      .page-hero, .content { padding: 60px 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="Itihaas.Sarthi.Rob.html" class="nav-logo">Itihaas Sarthi</a>
+  <ul class="nav-links">
+    <li><a href="Itihaas.Sarthi.Rob.About.html">About</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.HowItWorks.html">How It Works</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Features.html">Features</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Heritage.html" class="active">Heritage</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="Itihaas.Sarthi.Rob.html">Home</a> &nbsp;/&nbsp; Heritage</p>
+  <h1 class="page-h1">India's Heritage</h1>
+  <p class="page-sub">Itihaas Sarthi arrives preloaded with curated knowledge about some of India's most iconic cultural landmarks — ready to narrate, educate, and inspire.</p>
+</div>
+
+<section class="content">
+  <p class="section-label">Knowledge Base</p>
+  <h2 class="section-title">Preloaded sites</h2>
+  <p class="section-body">Each site in Itihaas Sarthi's memory is packed with historical facts, architectural details, cultural context, and stories — delivered in the visitor's chosen language the moment they arrive.</p>
+
+  <div class="sites-grid">
+    <div class="site-card">
+      <span class="site-index">01</span>
+      <span class="site-name">Taj Mahal</span>
+      <span class="site-desc">Built by Emperor Shah Jahan in memory of Mumtaz Mahal, this UNESCO World Heritage Site in Agra is one of the finest examples of Mughal architecture.</span>
+    </div>
+    <div class="site-card">
+      <span class="site-index">02</span>
+      <span class="site-name">Qutub Minar</span>
+      <span class="site-desc">A 73-metre minaret in Delhi built in 1193, the Qutub Minar is the tallest brick minaret in the world and a remarkable example of early Indo-Islamic architecture.</span>
+    </div>
+    <div class="site-card">
+      <span class="site-index">03</span>
+      <span class="site-name">Hampi</span>
+      <span class="site-desc">The ruins of Hampi in Karnataka were once the prosperous capital of the Vijayanagara Empire — a vast site of temples, markets, and royal complexes dating to the 14th century.</span>
+    </div>
+    <div class="site-card">
+      <span class="site-index">04</span>
+      <span class="site-name">Konark Sun Temple</span>
+      <span class="site-desc">Built in the 13th century in Odisha, this magnificent temple is designed as a colossal chariot of the Sun God, adorned with intricate stone carvings and sculptures.</span>
+    </div>
+    <div class="site-card">
+      <span class="site-index">05</span>
+      <span class="site-name">Ajanta & Ellora Caves</span>
+      <span class="site-desc">These ancient rock-cut cave complexes in Maharashtra feature stunning Buddhist, Hindu, and Jain art and architecture spanning nearly a thousand years of Indian history.</span>
+    </div>
+    <div class="site-card">
+      <span class="site-index">＋</span>
+      <span class="site-name">And Many More</span>
+      <span class="site-desc">The knowledge base continues to grow. Additional heritage sites across India are being added as Itihaas Sarthi develops through its prototype stages.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Itihaas Sarthi</span>
+  <span class="footer-copy">© 2026 Itihaas Sarthi. All rights reserved.</span>
+</footer>
+</body>
+</html>
