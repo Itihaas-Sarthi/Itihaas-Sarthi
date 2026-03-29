@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Indian History Chronology — Itihaas Sarthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{background:#0a0a0a;font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 60px;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #ebebeb}
+    .nav-logo{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;letter-spacing:-0.01em;text-decoration:none;color:#0a0a0a}
+    .nav-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap}
+    .nav-links a{font-size:13px;font-weight:500;color:#6b7280;text-decoration:none;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:#111;font-weight:600}
+    footer{margin-top:auto;background:#0a0a0a;border-top:1px solid #1c1f24;padding:28px 60px;display:flex;align-items:center;justify-content:space-between}
+    .footer-logo{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#f9fafb}
+    .footer-copy{font-size:12px;color:#4b5563}
+    @keyframes fade-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+    .page-hero{padding:90px 60px 60px;background:#0a0a0a;border-bottom:1px solid #1c1f24;animation:fade-up .7s ease .1s both}
+    .breadcrumb{font-size:12px;color:#4b5563;margin-bottom:24px}
+    .breadcrumb a{color:#4b5563;text-decoration:none}
+    .breadcrumb a:hover{color:#9ca3af}
+    .page-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#f9fafb;margin-bottom:20px}
+    .page-sub{font-size:16px;color:#6b7280;max-width:580px;line-height:1.75}
+
+    .content{padding:80px 60px;background:#0a0a0a;flex:1}
+
+    /* Period jump tabs */
+    .period-tabs{display:flex;gap:12px;margin-bottom:72px;flex-wrap:wrap}
+    .tab{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;padding:9px 20px;border-radius:100px;border:1px solid #2a2d34;color:#6b7280;text-decoration:none;transition:all .2s;background:#13151a}
+    .tab:hover{color:#9ca3af;border-color:#4b5563}
+
+    /* Period block */
+    .period{margin-bottom:88px}
+    .period-header{display:flex;align-items:center;gap:16px;margin-bottom:44px;padding-bottom:20px;border-bottom:1px solid #1c1f24;flex-wrap:wrap}
+    .period-badge{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 13px;border-radius:100px;border:1px solid}
+    .b-anc{color:#a78bfa;border-color:#3b2f6e;background:#1a1428}
+    .b-med{color:#fbbf24;border-color:#78450a;background:#1c1608}
+    .b-mod{color:#34d399;border-color:#065f46;background:#061a14}
+    .period-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:700;color:#f9fafb;letter-spacing:-0.02em}
+    .period-years{font-size:12px;color:#4b5563;margin-left:auto;font-style:italic}
+
+    /* Timeline spine */
+    .timeline{display:flex;flex-direction:column;position:relative;padding-left:52px}
+    .timeline::before{content:'';position:absolute;left:12px;top:8px;bottom:8px;width:1px;background:#1c1f24}
+
+    .tl-item{position:relative;padding-bottom:40px}
+    .tl-item:last-child{padding-bottom:0}
+    .tl-dot{position:absolute;left:-44px;top:7px;width:10px;height:10px;border-radius:50%;border:2px solid}
+    .d-anc{background:#3b2f6e;border-color:#a78bfa}
+    .d-med{background:#78450a;border-color:#fbbf24}
+    .d-mod{background:#065f46;border-color:#34d399}
+
+    .tl-date{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#4b5563;margin-bottom:5px}
+    .tl-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:#f9fafb;margin-bottom:8px;line-height:1.3}
+    .tl-desc{font-size:13px;color:#6b7280;line-height:1.8;max-width:640px}
+    .tl-tag{display:inline-block;margin-top:9px;font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;letter-spacing:.05em;text-transform:uppercase}
+    .t-anc{background:#1a1428;border:1px solid #3b2f6e;color:#a78bfa}
+    .t-med{background:#1c1608;border:1px solid #78450a;color:#fbbf24}
+    .t-mod{background:#061a14;border:1px solid #065f46;color:#34d399}
+
+    .back-btn{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;padding:12px 24px;border-radius:10px;text-decoration:none;background:#1c1f24;border:1px solid #2a2d34;color:#9ca3af;transition:all .2s;margin-top:16px}
+    .back-btn:hover{background:#252930;color:#f9fafb}
+    .back-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+    @media(max-width:768px){nav{padding:18px 24px}.nav-links{display:none}.page-hero,.content{padding:60px 24px}.timeline{padding-left:36px}.period-years{display:none}footer{padding:24px;flex-direction:column;gap:8px;text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="Itihaas.Sarthi.Rob.html" class="nav-logo">Itihaas Sarthi</a>
+  <ul class="nav-links">
+    <li><a href="Itihaas.Sarthi.Rob.About.html">About</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.HowItWorks.html">How It Works</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Features.html">Features</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Heritage.html" class="active">Heritage</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Pictures.html">Pictures</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="breadcrumb"><a href="Itihaas.Sarthi.Rob.html">Home</a> &nbsp;/&nbsp; <a href="Itihaas.Sarthi.Rob.Heritage.html">Heritage</a> &nbsp;/&nbsp; Indian History Chronology</p>
+  <h1 class="page-h1">Indian History Chronology</h1>
+  <p class="page-sub">30 defining events across three eras — Ancient, Medieval, and Modern — tracing India's journey across 5,000 years of history.</p>
+</div>
+
+<section class="content">
+
+  <div class="period-tabs">
+    <a href="#ancient" class="tab">Ancient India &nbsp;·&nbsp; c.2500 BCE – 700 CE</a>
+    <a href="#medieval" class="tab">Medieval India &nbsp;·&nbsp; 700 CE – 1857</a>
+    <a href="#modern" class="tab">Modern India &nbsp;·&nbsp; 1857 – 1950</a>
+  </div>
+
+  <!-- ANCIENT -->
+  <div class="period" id="ancient">
+    <div class="period-header">
+      <span class="period-badge b-anc">Ancient</span>
+      <h2 class="period-title">Ancient India</h2>
+      <span class="period-years">c. 2500 BCE – 700 CE</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 2500 – 1900 BCE</p>
+        <h3 class="tl-title">Peak of the Indus Valley Civilisation</h3>
+        <p class="tl-desc">The Harappan civilisation reached its height with planned cities at Mohenjo-daro and Harappa — featuring grid streets, covered drainage, and standardised weights. It was among the largest and most advanced urban societies of the ancient world, home to an estimated one million people across hundreds of settlements.</p>
+        <span class="tl-tag t-anc">Harappan</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 1500 BCE</p>
+        <h3 class="tl-title">Composition of the Rigveda</h3>
+        <p class="tl-desc">The earliest of the four Vedas was composed during the early Vedic period — representing the oldest surviving Sanskrit literature. Its 1,028 hymns form the foundational text of the Hindu tradition and shaped Indian philosophy, ritual, and society for the next three thousand years.</p>
+        <span class="tl-tag t-anc">Vedic Age</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 563 – 483 BCE</p>
+        <h3 class="tl-title">Life of Siddhartha Gautama — the Buddha</h3>
+        <p class="tl-desc">Born a prince in Lumbini, Siddhartha attained enlightenment at Bodh Gaya and became the Buddha. His teachings on the Four Noble Truths and the Eightfold Path founded Buddhism — a religion that spread from India across all of Asia and eventually the world, profoundly transforming civilisation.</p>
+        <span class="tl-tag t-anc">Buddhism</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">321 BCE</p>
+        <h3 class="tl-title">Chandragupta Maurya Founds the Maurya Empire</h3>
+        <p class="tl-desc">Guided by strategist Chanakya, Chandragupta Maurya overthrew the Nanda dynasty and established the first pan-Indian empire — stretching from Persia to Bengal. His statecraft treatise, the Arthashastra, remains one of the most sophisticated works of political economy in the ancient world.</p>
+        <span class="tl-tag t-anc">Maurya Empire</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">261 BCE</p>
+        <h3 class="tl-title">Battle of Kalinga — Ashoka Embraces Dhamma</h3>
+        <p class="tl-desc">Emperor Ashoka's brutal conquest of Kalinga killed over 100,000 people and deeply shook him. He converted to Buddhism, renounced warfare, and issued rock and pillar edicts across the subcontinent promoting non-violence, tolerance, and welfare. His edicts are India's earliest surviving inscriptions and a landmark in the history of human governance.</p>
+        <span class="tl-tag t-anc">Ashoka</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 320 – 550 CE</p>
+        <h3 class="tl-title">The Gupta Empire — India's Golden Age</h3>
+        <p class="tl-desc">The Gupta period saw extraordinary achievements in science, mathematics, literature, and art. Aryabhatta calculated pi and proposed a heliocentric model. Kalidasa wrote celebrated Sanskrit dramas. The decimal number system and the concept of zero — invented in India during this era — went on to transform world mathematics and science.</p>
+        <span class="tl-tag t-anc">Golden Age</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 300 – 600 CE</p>
+        <h3 class="tl-title">Rise of the Pallava and Chalukya Dynasties in South India</h3>
+        <p class="tl-desc">While northern empires rose and fell, South India saw the Pallavas build the magnificent Shore Temple at Mahabalipuram and the Chalukyas construct the stunning rock-cut cave temples at Badami and Aihole. These dynasties established the distinct Dravidian architectural tradition and expanded Indian cultural influence into Southeast Asia.</p>
+        <span class="tl-tag t-anc">South India</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 2nd Century BCE – 6th Century CE</p>
+        <h3 class="tl-title">Ajanta Cave Paintings</h3>
+        <p class="tl-desc">Over seven centuries, Buddhist monks carved and painted 30 magnificent caves into the rocky gorge at Ajanta in Maharashtra. The murals — depicting the Jataka tales with extraordinary naturalistic detail — represent the pinnacle of ancient Indian painting and remain among the finest artworks in human history.</p>
+        <span class="tl-tag t-anc">Buddhist Art</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">606 – 647 CE</p>
+        <h3 class="tl-title">Reign of Emperor Harsha of Kannauj</h3>
+        <p class="tl-desc">Harsha briefly reunited much of northern India under a just and cultured administration. A patron of Buddhism and Sanskrit literature, he himself wrote plays. The Chinese traveller Xuanzang visited during his reign and left detailed records of Indian society, religion, and daily life — invaluable to historians today.</p>
+        <span class="tl-tag t-anc">Harsha</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-anc"></div>
+        <p class="tl-date">c. 850 – 1279 CE</p>
+        <h3 class="tl-title">The Chola Empire at Its Height</h3>
+        <p class="tl-desc">The imperial Cholas built one of India's greatest maritime empires, with their navy dominating the Bay of Bengal and launching campaigns as far as Malaysia and Sumatra. Their architectural legacy — the Brihadeeswarar Temple at Thanjavur, built by Raja Raja Chola I — stands as one of the supreme achievements of Indian temple architecture.</p>
+        <span class="tl-tag t-anc">Chola Empire</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MEDIEVAL -->
+  <div class="period" id="medieval">
+    <div class="period-header">
+      <span class="period-badge b-med">Medieval</span>
+      <h2 class="period-title">Medieval India</h2>
+      <span class="period-years">700 CE – 1857</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">712 CE</p>
+        <h3 class="tl-title">Arab Conquest of Sindh</h3>
+        <p class="tl-desc">Muhammad bin Qasim led an Umayyad Arab army into Sindh, defeating Raja Dahir and establishing the first permanent Islamic rule in the Indian subcontinent. This opened the door to centuries of Islamic cultural, architectural, and philosophical exchange with India, reshaping the subcontinent's religious and demographic landscape.</p>
+        <span class="tl-tag t-med">Islamic Entry</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1000 – 1027 CE</p>
+        <h3 class="tl-title">Mahmud of Ghazni's Raids into India</h3>
+        <p class="tl-desc">The Ghaznavid sultan Mahmud of Ghazni made 17 raids into the Indian subcontinent, looting vast wealth including the famous sack of the Somnath temple in Gujarat (1025). His campaigns weakened the Rajput kingdoms and opened northwestern India to further Central Asian incursions over the following centuries.</p>
+        <span class="tl-tag t-med">Ghaznavid</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1192 CE</p>
+        <h3 class="tl-title">Second Battle of Tarain — Prithviraj Chauhan Defeated</h3>
+        <p class="tl-desc">Muhammad of Ghor defeated Prithviraj Chauhan III — the last major Hindu emperor of northern India — at the Second Battle of Tarain near Delhi. This decisive defeat ended Rajput supremacy in the north and opened the way for the establishment of the Delhi Sultanate, transforming the political and cultural character of the subcontinent.</p>
+        <span class="tl-tag t-med">Delhi Sultanate</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1206 CE</p>
+        <h3 class="tl-title">Establishment of the Delhi Sultanate</h3>
+        <p class="tl-desc">Qutb ud-Din Aibak founded the Delhi Sultanate — the first major Islamic empire in India — after the death of Muhammad of Ghor. Over the next 320 years, five successive dynasties (the Mamluks, Khaljis, Tughlaqs, Sayyids, and Lodis) ruled from Delhi, leaving a permanent imprint on Indian architecture, culture, administration, and language.</p>
+        <span class="tl-tag t-med">Delhi Sultanate</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1336 CE</p>
+        <h3 class="tl-title">Founding of the Vijayanagara Empire</h3>
+        <p class="tl-desc">Harihara I and Bukka Raya I founded Vijayanagara — one of the greatest Hindu kingdoms of the medieval world. At its peak under Krishnadevaraya (r. 1509–29), Vijayanagara was one of the most prosperous cities on earth, a bastion of Hindu culture, art, and learning whose ruins at Hampi remain a UNESCO World Heritage Site.</p>
+        <span class="tl-tag t-med">Vijayanagara</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1498 CE</p>
+        <h3 class="tl-title">Vasco da Gama Reaches India</h3>
+        <p class="tl-desc">Portuguese explorer Vasco da Gama arrived at Calicut (Kozhikode) on the Malabar Coast, opening a direct sea route between Europe and India. This transformed global trade, broke the Arab monopoly on the spice trade, and marked the beginning of sustained European engagement with India — setting in motion events that would ultimately lead to colonialism.</p>
+        <span class="tl-tag t-med">European Contact</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1526 CE</p>
+        <h3 class="tl-title">First Battle of Panipat — Babur Founds the Mughal Empire</h3>
+        <p class="tl-desc">Babur, a descendant of Timur and Genghis Khan, defeated the last Lodi sultan Ibrahim Lodi at Panipat and established the Mughal Empire — one of the greatest empires in world history. At its zenith under Aurangzeb, the Mughal Empire covered nearly the entire Indian subcontinent and was one of the wealthiest states on earth.</p>
+        <span class="tl-tag t-med">Mughal Empire</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1556 CE</p>
+        <h3 class="tl-title">Akbar's Reign Begins — Era of Religious Tolerance</h3>
+        <p class="tl-desc">Emperor Akbar ascended the Mughal throne at age 13 and became one of the greatest rulers in Indian history. He abolished the jizya tax on non-Muslims, married Hindu Rajput princesses, invited scholars of all faiths to his court, and created Din-i-Ilahi — a syncretic spiritual movement. His reign unified the subcontinent through administration, culture, and enlightened policy.</p>
+        <span class="tl-tag t-med">Mughal</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1631 – 1648 CE</p>
+        <h3 class="tl-title">Construction of the Taj Mahal</h3>
+        <p class="tl-desc">Emperor Shah Jahan commissioned the Taj Mahal at Agra in memory of his wife Mumtaz Mahal. Over 20,000 artisans worked for 17 years to build this ivory-white marble marvel — the supreme expression of Mughal architecture. It is today the most visited monument in India and a UNESCO World Heritage Site recognised globally as a symbol of eternal love.</p>
+        <span class="tl-tag t-med">Mughal Architecture</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-med"></div>
+        <p class="tl-date">1757 CE</p>
+        <h3 class="tl-title">Battle of Plassey — British Begin Control of India</h3>
+        <p class="tl-desc">The British East India Company under Robert Clive defeated the Nawab of Bengal, Siraj ud-Daulah, at the Battle of Plassey. Victory here gave the Company control of Bengal — the richest province in India — and began a process of territorial and economic expansion that would eventually result in British dominion over the entire subcontinent.</p>
+        <span class="tl-tag t-med">British Era</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODERN -->
+  <div class="period" id="modern">
+    <div class="period-header">
+      <span class="period-badge b-mod">Modern</span>
+      <h2 class="period-title">Modern India</h2>
+      <span class="period-years">1857 – 1950</span>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1857</p>
+        <h3 class="tl-title">The First War of Indian Independence</h3>
+        <p class="tl-desc">A widespread uprising — also called the Sepoy Mutiny — broke out against the British East India Company across northern and central India. Though suppressed, it marked India's first organised armed resistance to colonial rule. In its aftermath, the British Crown dissolved the East India Company and assumed direct governance of India, beginning the British Raj.</p>
+        <span class="tl-tag t-mod">Independence Movement</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1885</p>
+        <h3 class="tl-title">Founding of the Indian National Congress</h3>
+        <p class="tl-desc">The Indian National Congress (INC) was founded in Bombay, initially as a platform for educated Indians to petition the British government. Under successive leaders it grew into the primary vehicle for the Indian independence movement, eventually led by figures including Bal Gangadhar Tilak, Gopal Krishna Gokhale, and most famously, Mahatma Gandhi.</p>
+        <span class="tl-tag t-mod">Nationalism</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1905</p>
+        <h3 class="tl-title">Partition of Bengal and the Swadeshi Movement</h3>
+        <p class="tl-desc">Viceroy Curzon's partition of Bengal along religious lines sparked massive public outrage and gave birth to the Swadeshi movement — a campaign to boycott British goods and promote Indian-made products. It marked a turning point in Indian nationalism, transforming the independence movement from a polite petition into a mass political force.</p>
+        <span class="tl-tag t-mod">Swadeshi</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1915</p>
+        <h3 class="tl-title">Mahatma Gandhi Returns to India</h3>
+        <p class="tl-desc">Mohandas Karamchand Gandhi returned to India from South Africa and transformed the independence movement. His philosophy of Satyagraha (non-violent resistance) and his ability to mobilise millions across caste, class, and religion made him the central figure of the freedom struggle and one of the most influential leaders in world history.</p>
+        <span class="tl-tag t-mod">Gandhi</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1919</p>
+        <h3 class="tl-title">Jallianwala Bagh Massacre</h3>
+        <p class="tl-desc">British General Reginald Dyer ordered his troops to open fire on a peaceful crowd gathered at Jallianwala Bagh in Amritsar, killing at least 379 people (with estimates running far higher) and wounding over 1,200. The massacre turned moderate opinion across India decisively against British rule and is one of the darkest events of the colonial period.</p>
+        <span class="tl-tag t-mod">Colonial Atrocity</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1930</p>
+        <h3 class="tl-title">Gandhi's Salt March — Dandi March</h3>
+        <p class="tl-desc">Gandhi led a 240-mile march from Sabarmati Ashram to the coastal village of Dandi to produce salt in defiance of the British salt tax. The march captured global attention and triggered the Civil Disobedience Movement, drawing millions into direct action against colonial rule. It remains one of the most iconic acts of non-violent protest in history.</p>
+        <span class="tl-tag t-mod">Civil Disobedience</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">1942</p>
+        <h3 class="tl-title">Quit India Movement</h3>
+        <p class="tl-desc">Gandhi launched the Quit India Movement at the Bombay session of the Congress, demanding an immediate end to British rule. His call — "Do or Die" — led to the arrest of virtually the entire Congress leadership and widespread civil unrest. The movement demonstrated to Britain that governing India was no longer sustainable and accelerated the path to independence.</p>
+        <span class="tl-tag t-mod">Quit India</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">15 August 1947</p>
+        <h3 class="tl-title">Indian Independence — End of British Rule</h3>
+        <p class="tl-desc">At midnight on 15 August 1947, India became an independent nation after nearly 200 years of British colonial rule. Jawaharlal Nehru delivered his famous "Tryst with Destiny" speech at the Red Fort in Delhi. Independence also brought Partition — the creation of Pakistan — leading to one of the largest mass migrations in human history and immense communal violence.</p>
+        <span class="tl-tag t-mod">Independence</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">30 January 1948</p>
+        <h3 class="tl-title">Assassination of Mahatma Gandhi</h3>
+        <p class="tl-desc">Mahatma Gandhi was assassinated by Nathuram Godse at Birla House in New Delhi. Gandhi's death shocked the world and plunged India into mourning. He remains the Father of the Nation and his philosophy of non-violent resistance influenced liberation movements globally — from the American civil rights movement to anti-apartheid struggles in South Africa.</p>
+        <span class="tl-tag t-mod">Gandhi</span>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot d-mod"></div>
+        <p class="tl-date">26 January 1950</p>
+        <h3 class="tl-title">India Becomes a Republic — Constitution Adopted</h3>
+        <p class="tl-desc">India's Constitution — the longest written constitution of any nation — came into force on 26 January 1950, making India a sovereign democratic republic. Drafted primarily by Dr. B.R. Ambedkar, it guaranteed fundamental rights to all citizens regardless of caste, religion, or gender. Republic Day is celebrated on this date every year as India's founding as a constitutional democracy.</p>
+        <span class="tl-tag t-mod">Republic</span>
+      </div>
+
+    </div>
+  </div>
+
+  <a href="Itihaas.Sarthi.Rob.Heritage.html" class="back-btn"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to Heritage</a>
+
+</section>
+
+<footer>
+  <span class="footer-logo">Itihaas Sarthi</span>
+  <span class="footer-copy">© 2026 Itihaas Sarthi. All rights reserved.</span>
+</footer>
+</body>
+</html>

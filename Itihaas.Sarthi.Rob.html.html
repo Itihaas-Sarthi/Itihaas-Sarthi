@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Itihaas Sarthi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #fafafa; font-family: 'Inter', sans-serif; color: #111; line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 60px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #ebebeb;
+      animation: fade-down 0.5s ease both;
+    }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: #6b7280; text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #111; }
+
+    /* HERO */
+    .hero {
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 110px 24px 80px;
+      animation: fade-up 0.8s cubic-bezier(.22,1,.36,1) 0.1s both;
+    }
+    .hero-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 24px; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3.2rem, 8vw, 7.5rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; color: #0a0a0a; margin-bottom: 28px; }
+    .hero-sub { font-size: clamp(15px, 2vw, 18px); color: #6b7280; max-width: 520px; line-height: 1.75; margin-bottom: 48px; }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 10px; text-decoration: none; transition: transform 0.15s, background 0.2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-dark { background: #0a0a0a; color: #fff; }
+    .btn-dark:hover { background: #222; }
+    .btn-light { background: #fff; color: #374151; border: 1px solid #e5e7eb; }
+    .btn-light:hover { border-color: #aaa; }
+
+    /* SHARED SECTION */
+    section { padding: 80px 60px; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9ca3af; margin-bottom: 12px; }
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; color: #0a0a0a; margin-bottom: 16px; }
+    .section-body { font-size: 15px; color: #6b7280; max-width: 560px; line-height: 1.75; }
+
+    /* ABOUT */
+    .about { background: #fff; border-top: 1px solid #ebebeb; border-bottom: 1px solid #ebebeb; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-visual { display: flex; align-items: center; justify-content: center; background: #f3f4f6; border-radius: 20px; height: 320px; }
+    .robot-svg { width: 160px; height: 200px; }
+
+    /* HOW IT WORKS — 3 top, 2 bottom */
+    .how { background: #fafafa; }
+    .steps-wrap {
+      margin-top: 48px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .steps-row {
+      display: grid;
+      gap: 0;
+    }
+    .steps-row.top    { grid-template-columns: repeat(3, 1fr); }
+    .steps-row.bottom { grid-template-columns: repeat(2, 1fr); border-top: 1px solid #e5e7eb; }
+    .step {
+      background: #fff;
+      padding: 32px 28px;
+      display: flex; flex-direction: column; gap: 12px;
+      border-right: 1px solid #e5e7eb;
+    }
+    .step:last-child { border-right: none; }
+    .step-num { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #d1d5db; }
+    .step-icon { width: 40px; height: 40px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .step-icon svg { width: 20px; height: 20px; stroke: #374151; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .step-title { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #111; }
+    .step-desc { font-size: 13px; color: #9ca3af; line-height: 1.65; }
+
+    /* FEATURES */
+    .features-section { background: #fff; border-top: 1px solid #ebebeb; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 48px; }
+    .feat-card { background: #fafafa; border: 1px solid #e5e7eb; border-radius: 14px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow 0.2s, transform 0.2s; }
+    .feat-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .feat-icon { width: 38px; height: 38px; background: #f3f4f6; border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+    .feat-icon svg { width: 19px; height: 19px; stroke: #374151; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feat-title { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #111; }
+    .feat-desc { font-size: 13px; color: #9ca3af; line-height: 1.65; }
+
+    /* HERITAGE */
+    .sites-section { background: #0a0a0a; }
+    .sites-section .section-label { color: #4b5563; }
+    .sites-section .section-title { color: #f9fafb; }
+    .sites-section .section-body { color: #6b7280; }
+    .sites-strip { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+    .site-pill { background: #1c1f24; border: 1px solid #2a2d34; border-radius: 100px; padding: 10px 20px; font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; color: #9ca3af; transition: background 0.2s, color 0.2s; }
+    .site-pill:hover { background: #252930; color: #f9fafb; }
+
+    /* SPECS — 3 top, 2 bottom */
+    .specs { background: #fafafa; border-top: 1px solid #ebebeb; }
+    .specs-wrap {
+      margin-top: 48px;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .specs-row {
+      display: grid;
+    }
+    .specs-row.top    { grid-template-columns: repeat(3, 1fr); }
+    .specs-row.bottom { grid-template-columns: repeat(2, 1fr); border-top: 1px solid #e5e7eb; }
+    .spec-cell {
+      background: #fff;
+      padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 4px;
+      border-right: 1px solid #e5e7eb;
+    }
+    .spec-cell:last-child { border-right: none; }
+    .spec-val { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #0a0a0a; letter-spacing: -0.02em; }
+    .spec-key { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: #9ca3af; }
+
+    /* FOOTER */
+    footer { background: #fff; border-top: 1px solid #ebebeb; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #0a0a0a; }
+    .footer-copy { font-size: 12px; color: #c4c9d4; }
+
+    /* ANIMATIONS */
+    @keyframes fade-down { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+    @keyframes fade-up   { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      section { padding: 60px 24px; }
+      .about { grid-template-columns: 1fr; gap: 40px; }
+      .about-visual { height: 220px; }
+      .steps-row.top, .steps-row.bottom, .specs-row.top, .specs-row.bottom { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Itihaas Sarthi</span>
+  <ul class="nav-links">
+    <li><a href="Itihaas.Sarthi.Rob.About.html">About</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.HowItWorks.html">How It Works</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Features.html">Features</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Heritage.html">Heritage</a></li>
+    <li><a href="Itihaas.Sarthi.Rob.Pictures.html">Pictures</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Itihaas Sarthi</h1>
+  <p class="hero-sub">A smart, autonomous robot built to guide visitors through India's greatest heritage sites — narrating history, assisting the differently abled, and bringing culture to life.</p>
+  <div class="btn-row">
+    <a href="Itihaas.Sarthi.Rob.HowItWorks.html" class="btn btn-dark">See How It Works</a>
+    <a href="Itihaas.Sarthi.Rob.Features.html" class="btn btn-light">Explore Features</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual">
+    <svg class="robot-svg" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="80" y1="30" x2="80" y2="14" stroke="#d1d5db" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="80" cy="10" r="5" fill="#374151"/>
+      <rect x="44" y="30" width="72" height="54" rx="12" fill="#e5e7eb"/>
+      <rect x="58" y="46" width="16" height="10" rx="4" fill="#374151"/>
+      <rect x="86" y="46" width="16" height="10" rx="4" fill="#374151"/>
+      <rect x="60" y="48" width="6" height="4" rx="2" fill="#6b7280"/>
+      <rect x="88" y="48" width="6" height="4" rx="2" fill="#6b7280"/>
+      <rect x="62" y="66" width="36" height="5" rx="2.5" fill="#d1d5db"/>
+      <rect x="72" y="84" width="16" height="10" rx="4" fill="#d1d5db"/>
+      <rect x="32" y="94" width="96" height="68" rx="14" fill="#e5e7eb"/>
+      <rect x="52" y="110" width="56" height="34" rx="8" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+      <circle cx="68" cy="124" r="5" fill="#374151"/>
+      <circle cx="80" cy="124" r="5" fill="#9ca3af"/>
+      <circle cx="92" cy="124" r="5" fill="#374151"/>
+      <rect x="10" y="96" width="20" height="54" rx="10" fill="#d1d5db"/>
+      <rect x="130" y="96" width="20" height="54" rx="10" fill="#d1d5db"/>
+      <ellipse cx="52" cy="170" rx="20" ry="10" fill="#374151"/>
+      <ellipse cx="52" cy="168" rx="14" ry="6" fill="#4b5563"/>
+      <ellipse cx="108" cy="170" rx="20" ry="10" fill="#374151"/>
+      <ellipse cx="108" cy="168" rx="14" ry="6" fill="#4b5563"/>
+    </svg>
+  </div>
+  <div>
+    <p class="section-label">What Is It</p>
+    <h2 class="section-title">A robot built for India's heritage</h2>
+    <p class="section-body">Itihaas Sarthi is an autonomous guiding robot designed to navigate heritage sites, narrate cultural history through audio in multiple languages, and physically assist visually impaired visitors with a retractable handle system. It combines GPS, sensors, a camera, and onboard knowledge to deliver a seamless, educational experience.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title">From activation to narration</h2>
+
+  <div class="steps-wrap">
+    <!-- ROW 1: 3 boxes -->
+    <div class="steps-row top">
+      <div class="step">
+        <span class="step-num">01</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <span class="step-title">RFID Activation</span>
+        <span class="step-desc">The robot wakes up when an authorised RFID tag is scanned, ready to assist.</span>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg></div>
+        <span class="step-title">Location Detection</span>
+        <span class="step-desc">GPS and camera identify the exact heritage site and surrounding monuments.</span>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <span class="step-title">Facts Retrieved</span>
+        <span class="step-desc">Onboard memory serves curated, accurate cultural information about the site.</span>
+      </div>
+    </div>
+    <!-- ROW 2: 2 boxes -->
+    <div class="steps-row bottom">
+      <div class="step">
+        <span class="step-num">04</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+        <span class="step-title">Audio Narration</span>
+        <span class="step-desc">Text-to-speech speaks history aloud in the visitor's chosen language.</span>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <div class="step-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <span class="step-title">Guided Movement</span>
+        <span class="step-desc">Ultrasonic sensors and cliff detectors navigate safely, vibrating to warn of obstacles.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <p class="section-label">Features</p>
+  <h2 class="section-title">Built for everyone, everywhere</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <span class="feat-title">Accessibility First</span>
+      <span class="feat-desc">A retractable handle extends automatically for visually impaired visitors, guiding them safely through the site with vibration alerts for turns and obstacles.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <span class="feat-title">Multilingual Narration</span>
+      <span class="feat-desc">Speaks cultural facts in Hindi, English, and regional languages — so every visitor connects with history in their own tongue.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg></div>
+      <span class="feat-title">GPS-Powered Context</span>
+      <span class="feat-desc">Knows exactly where it is and automatically loads the right historical facts — no manual input needed from the visitor.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+      <span class="feat-title">Camera Vision</span>
+      <span class="feat-desc">Onboard camera identifies monuments in real time, enriching narration with visual recognition of the surrounding environment.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="13" rx="2"/><path d="M5 6V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg></div>
+      <span class="feat-title">Storage Compartment</span>
+      <span class="feat-desc">Carries visitor essentials — water bottles, bags, and belongings — so tourists can explore hands-free and comfortably.</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <span class="feat-title">Safe & Reliable Power</span>
+      <span class="feat-desc">A rechargeable Li-ion battery with a built-in management system keeps the robot running all day, safely and efficiently.</span>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE SITES -->
+<section class="sites-section" id="heritage">
+  <p class="section-label">Knowledge Base</p>
+  <h2 class="section-title" style="color:#f9fafb">Preloaded with India's heritage</h2>
+  <p class="section-body">Itihaas Sarthi arrives ready — loaded with historical facts, stories, and context for some of India's most significant cultural landmarks.</p>
+  <div class="sites-strip">
+    <span class="site-pill">Taj Mahal</span>
+    <span class="site-pill">Qutub Minar</span>
+    <span class="site-pill">Hampi</span>
+    <span class="site-pill">Konark Sun Temple</span>
+    <span class="site-pill">Ajanta & Ellora Caves</span>
+    <span class="site-pill">+ Many More</span>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs">
+  <p class="section-label">At a Glance</p>
+  <h2 class="section-title">Key specifications</h2>
+
+  <div class="specs-wrap">
+    <!-- ROW 1: 3 boxes -->
+    <div class="specs-row top">
+      <div class="spec-cell">
+        <span class="spec-val">4</span>
+        <span class="spec-key">Wheels</span>
+      </div>
+      <div class="spec-cell">
+        <span class="spec-val">3+</span>
+        <span class="spec-key">Languages</span>
+      </div>
+      <div class="spec-cell">
+        <span class="spec-val">7.4V</span>
+        <span class="spec-key">Battery</span>
+      </div>
+    </div>
+    <!-- ROW 2: 2 boxes -->
+    <div class="specs-row bottom">
+      <div class="spec-cell">
+        <span class="spec-val">360°</span>
+        <span class="spec-key">Obstacle Sensing</span>
+      </div>
+      <div class="spec-cell">
+        <span class="spec-val">GPS</span>
+        <span class="spec-key">Location Aware</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Itihaas Sarthi</span>
+  <span class="footer-copy">© 2026 Itihaas Sarthi. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
